@@ -1,4 +1,4 @@
-import Suit, {expect} from './index.js'
+import Suit, {expect, chai} from './index.js'
 const $math =new Suit('Math')
 const $circle = new Suit('Math::Circle')
 
@@ -8,16 +8,17 @@ $math.it('add', () => {
 	
 	const result = a+b
 
-	expect(result, 'incorrect sum').to.be.equal(3)
+	expect(result, 'incorrect sum').equals(3)
 })
 
 await $math.it('add, when async testfn', async () => {
 	const a = 1
 	const b = 2
 
-	const result = a+b
+	const req = await chai.request('http://api.mathjs.org/v4/').get(`?expr=${a}%2B${b}`)
 
-	expect(result, 'incorrect sum').to.be.equal(3)
+	const result = req.text
+	expect(result, 'incorrect sum').to.be.equal('3')
 })
 
 $math.done()
@@ -33,7 +34,7 @@ $circle.it('calculate circumference from radius', () => {
 
 $circle.it('is circle a square?', () => {
 	const result = true
-
+	
 	expect(result, 'circle is not a square').to.equal(false)
 })
 

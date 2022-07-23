@@ -1,17 +1,5 @@
 {
 	"compilerOptions": {
-		"plugins": [
-			{
-				"transform": "typescript-is/lib/transform-inline/transformer",
-				"shortCircuit": false,
-				"ignoreClasses": true,
-				"ignoreMethods": true,
-				"functionBehavior": "ignore",
-				"disallowSuperfluousObjectProperties": false,
-				"transformNonNullExpressions": true,
-				"emitDetailedErrors": "true"
-			}
-		],
 		"incremental": true,
 		"listEmittedFiles": false,
 		"esModuleInterop": true,
